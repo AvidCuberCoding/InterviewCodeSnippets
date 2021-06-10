@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form action="">
+            <label for="service">Service: </label>
+            <select id="service" name="service">
+                <option value="125" id="makeover">Makeover - $125</option>
+                <option value="60" id="hairstyling">Hair Styling - $60</option>
+                <option value="35" id="manicure">Manicure - $35</option>
+                <option value="200" id="permaMakeup">Permanent Makeup - $200</option>
+            </select>
+            <label for="discount">Discount: </label>
+            <select id="discount" name="discount">
+                <option value="1" id="noDiscount">No Discount</option>
+                <option value=".9" id="tenPercent">10% Discount</option>
+                <option value=".8" id="twentyPercent">20% Discount</option>
+            </select>
+            <input type="button" name="calculate" value= "Calculate" id="calculate" onclick="CalculateTotal(this.form)"></button>
+        </form>
+        <p id="total"></p>
+        <script>
+            function CalculateTotal(form) {
+                document.getElementById("total").innerHTML =
+                "Total: $" + (
+                    parseFloat(form.service.value) * parseFloat(form.discount.value)
+                );
+            }
+        </script>
+    </body>
+</html>

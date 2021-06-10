@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            padding: 3px;
+            margin: 3px;
+            font-size: large;
+        }
+    </style>
+    <head>
+        <title>Car Rental Service</title>
+    </head>
+    <body>
+        <form action="">
+            <label for="cars">Type of Rental Cars: </label>
+            <select id="cars" name="cars">
+                <option value="30" id="compact">Compact <em>($30/day)</em></option>
+                <option value="40" id="intermediate">Intermediate <em>($40/day)</em></option>
+                <option value="50" id="standard">Standard <em>($50/day)</em></option>
+            </select><br>
+                <label for="DaysRenting">How many days (60 days max)?</label>
+                <input type="number" name="DaysRenting" id="DaysRenting" min=1 max=60><br>
+                <input type="radio" name="insurance" id="insurance" value="15">
+                <label for="insurance">Insurance ($15/day)</label>
+                <input type="radio" name="insurance" id="noInsurance" value="0">
+                <label for="noInsurance">No Insurance</label><br>
+                <input type="button" name ="caluclateTotal" value="Caluclate Total" onclick="CalculateRentalTotal(this.form)">
+        </form>    
+            <p id="total"></p>
+        <script>
+            function CalculateRentalTotal(form) {
+                if(form.DaysRenting.value > 60) {
+                    document.getElementById("total").innerHTML =
+                    "Can't rent car for more than 60 days";
+                }
+                else {
+                document.getElementById("total").innerHTML =
+                "Total: $" + 
+                (parseInt(form.cars.value) *
+                form.DaysRenting.value + 
+                parseInt(form.insurance.value) * 
+                form.DaysRenting.value);
+                }
+            }
+        </script>
+    </body>
+</html>
